@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app:
+    image: your-dockerhub-username/getAppAndGo:latest
+    restart: unless-stopped
+    env_file:
+      - getAppAndGo-env
+    ports:
+      - "3306:80"
