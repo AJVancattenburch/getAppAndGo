@@ -6,4 +6,4 @@ services:
     env_file:
       - getAppAndGo-env
     ports:
-      - "3306:80"
+      - "7045:80"

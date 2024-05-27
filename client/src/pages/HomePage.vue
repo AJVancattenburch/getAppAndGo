@@ -1,20 +1,36 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+      <img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="avatar" />
+      <h1>Welcome to your Vue 3 App!</h1>
+      <p>Here are your todos:</p>
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">{{ todo.description }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
+import { computed } from "vue";
+import { todosService } from "../services/TodosService.js";
+import { logger } from "../utils/Logger.js";
+import { AppState } from "../AppState.js";
+
 export default {
   setup() {
+    
+    async function getAllTodos() {
+      try {
+        await todosService.getAllTodos();
+      } catch (error) {
+        logger.error(error);
+      }
+    }
+
     return {
-      
+      getAllTodos,
+      todos: computed(() => AppState.todos)
     }
   }
 }

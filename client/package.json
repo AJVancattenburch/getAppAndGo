@@ -7,7 +7,7 @@
     "build": "vite build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@bcwdev/auth0provider-client": "0.0.13",
     "@mdi/font": "7.3.67",
