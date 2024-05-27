@@ -8,17 +8,30 @@
         <li v-for="todo in todos" :key="todo.id">{{ todo.description }}</li>
       </ul>
     </div>
+
+    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
+      <h2>Create a new todo:</h2>
+      <form @submit.prevent="createTodo">
+        <input v-model="todo.title" type="text" placeholder="Enter a title" />
+        <input v-model="todo.description" type="text" placeholder="Enter a description" />
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { todosService } from "../services/TodosService.js";
 import { logger } from "../utils/Logger.js";
 import { AppState } from "../AppState.js";
 
 export default {
   setup() {
+    const todo = ref({
+      description: "",
+      completed: false
+    });
     
     async function getAllTodos() {
       try {
@@ -28,7 +41,18 @@ export default {
       }
     }
 
+    async function createTodo() {
+      try {
+        await todosService.createTodo(todo.value);
+        await getAllTodos();
+      } catch (error) {
+        logger.error(error);
+      }
+    }
+
     return {
+      todo,
+      createTodo,
       getAllTodos,
       todos: computed(() => AppState.todos)
     }

@@ -4,6 +4,11 @@ import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 class TodosService {
 
+  async createTodo(newTodo) {
+    const res = await api.post('api/todos', newTodo)
+    AppState.todos.push(new Todo(res.data))
+  }
+
   async getAllTodos() {
     const res = await api.get('api/todos')
     logger.log('List of Todos:', res.data)
