@@ -19,20 +19,19 @@ CREATE TABLE IF NOT EXISTS todos(
   FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8mb4 COMMENT '';
 
-DROP TABLE IF EXISTS
-todos,
-accounts;
+DROP TABLE IF EXISTS accounts;
+DROP TABLE IF EXISTS todos;
 
 INSERT INTO accounts
   (id, name, email, picture)
 VALUES
-  ('1', 'AJ V', 'wanderwithme1899@gmail.com', 'https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAAB-zrMZEDXI2T62PSuT6kpB6qg.png');
+  ('665575da66c8bad090c9e07f', 'AJ V', 'wanderwithme1899@gmail.com', 'https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAAB-zrMZEDXI2T62PSuT6kpB6qg.png');
 
 INSERT INTO todos
   (title, description, completed, creatorId)
 VALUES
-  ('Practice SQL Queries', 'Learn how to use SQL to interact with databases', false, '1'),
-  ('Learn how to use JS w/ SQL', 'Learn how to use JS to interact with SQL databases', false, '1'),
-  ('Learn how to use Retool', 'Learn how to use Retool\'s UI Dashboard using JS and SQL to create applications and internal tools within them.', false, '1'),
-  ('Learn how to use Snowflake', 'Learn how to use Snowflake\'s cloud data platform to store and analyze data.', false, '1'),
-  ('Learn how to utilize Snowflake, Retool, and JS', 'Learn how to use Snowflake and use SQL to query data tables within Retool, and JS to interact with the UI.', false, '1');
+  ('Practice SQL Queries', 'Learn how to use SQL to interact with databases', false, '665575da66c8bad090c9e07f'),
+  ('Learn how to use JS w/ SQL', 'Learn how to use JS to interact with SQL databases', false, '665575da66c8bad090c9e07f'),
+  ('Learn how to use Retool', 'Learn how to use Retool\'s UI Dashboard using JS and SQL to create applications and internal tools within them.', false, '665575da66c8bad090c9e07f'),
+  ('Learn how to use Snowflake', 'Learn how to use Snowflake\'s cloud data platform to store and analyze data.', false, '665575da66c8bad090c9e07f'),
+  ('Learn how to utilize Snowflake, Retool, and JS', 'Learn how to use Snowflake and use SQL to query data tables within Retool, and JS to interact with the UI.', false, '665575da66c8bad090c9e07f');

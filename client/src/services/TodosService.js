@@ -6,13 +6,26 @@ class TodosService {
 
   async createTodo(newTodo) {
     const res = await api.post('api/todos', newTodo)
-    AppState.todos.push(new Todo(res.data))
+    AppState.todos.unshift(new Todo(res.data))
   }
 
   async getAllTodos() {
     const res = await api.get('api/todos')
     logger.log('List of Todos:', res.data)
-    AppState.todos = res.data.map(t => new Todo(t))
+    const toDoList = res.data.map(t => new Todo(t))
+    AppState.todos = toDoList
+  }
+
+  async getTodoById(todoId) {
+    const res = await api.get('api/todos/' + todoId)
+    AppState.activeTodo = new Todo(res.data)
+  }
+
+  async deleteTodo(todoId) {
+    await api.delete('api/todos/' + todoId)
+    AppState.todos = AppState.todos.filter(t => t.id !== todoId)
+
+    logger.log(`Deleted Todo # ${todoId}`)
   }
 }
 

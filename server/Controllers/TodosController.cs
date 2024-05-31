@@ -1,7 +1,7 @@
 namespace getAppAndGo.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TodosController : ControllerBase
 {
   private readonly TodosService _tds;
