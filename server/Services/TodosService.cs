@@ -1,3 +1,5 @@
+using System;
+
 namespace getAppAndGo.Services;
 
 public class TodosService
@@ -37,7 +39,11 @@ public class TodosService
     {
       original.Title = updatedTodo.Title ?? original.Title;
       original.Description = updatedTodo.Description ?? original.Description;
-
+      if (updatedTodo.Completed != original.Completed)
+      {
+        original.Completed = updatedTodo.Completed;
+        original.UpdatedAt = DateTime.Now;
+      }
       _repo.EditTodo(original);
       return original;
     }

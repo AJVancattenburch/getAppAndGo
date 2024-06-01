@@ -5,7 +5,7 @@
       <h1>Welcome to Vue 3 Client!</h1>
     </div>
 
-    <TodoForm />
+    <CreateTodoForm />
     <div class="col-12 d-flex flex-column justify-content-start p-3">
       <p>Current Tasks:</p>
         <ol>
@@ -21,7 +21,7 @@
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import TodoCard from "../components/Todos/TodoCard.vue";
-import TodoForm from "../components/Todos/TodoForm.vue";
+import CreateTodoForm from "../components/Todos/CreateTodoForm.vue";
 
 export default {
   setup() {
@@ -31,7 +31,7 @@ export default {
     }
   },
   components: {
-    TodoForm, TodoCard,
+    CreateTodoForm, TodoCard,
   }
 }
 </script>
